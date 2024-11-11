@@ -39,6 +39,11 @@ public class MenuPrincipalManager : MonoBehaviour
         painelMenuConfig.SetActive(false); 
     }
 
+    public void FecharOpcoesVolume(){
+
+        painelMenuVolume.SetActive(false);
+    }
+
     public void Sair()
     {
 
