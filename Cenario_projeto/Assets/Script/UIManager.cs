@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance; 
+    public GameObject backItem; 
 
     public GameObject handCursor ; 
     
@@ -30,5 +31,11 @@ public class UIManager : MonoBehaviour
 
         handCursor.SetActive(state); 
         
+    }
+    public void SetBackImage(bool state)
+    {
+
+        backItem.SetActive(state);
+
     }
 }

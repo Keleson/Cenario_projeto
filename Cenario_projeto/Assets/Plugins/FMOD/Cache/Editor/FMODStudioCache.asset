@@ -27,6 +27,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 121416
+--- !u!114 &-6960325406413535036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Alarm_clock
+  m_EditorClassIdentifier: 
+  Path: event:/Alarm_clock
+  Guid:
+    Data1: 182913684
+    Data2: 1155289393
+    Data3: 276040364
+    Data4: -1177785552
+  Banks:
+  - {fileID: -3946699672108698188}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
+--- !u!114 &-5452032904507053953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/waking up
+  m_EditorClassIdentifier: 
+  Path: event:/waking up
+  Guid:
+    Data1: 253706857
+    Data2: 1119550196
+    Data3: 1491816114
+    Data4: 1772347146
+  Banks:
+  - {fileID: -3946699672108698188}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5564
+--- !u!114 &-4559128051388441152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Yauning
+  m_EditorClassIdentifier: 
+  Path: event:/Yauning
+  Guid:
+    Data1: -902940710
+    Data2: 1328904802
+    Data3: 1795392659
+    Data4: 1503816567
+  Banks:
+  - {fileID: -3946699672108698188}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3483
 --- !u!114 &-3946699672108698188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +123,10 @@ MonoBehaviour:
   Path: ../fmodAudios/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638668843172649686
+  lastModified: 638681389232886773
   FileSizes:
   - Name: Desktop
-    Value: 2836768
+    Value: 3021984
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -65,12 +146,16 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 8999278994914449598}
   - {fileID: -7269362405638071971}
+  - {fileID: -5452032904507053953}
+  - {fileID: -4559128051388441152}
+  - {fileID: -6960325406413535036}
+  - {fileID: 4588843754510639632}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3946699672108698188}
   StringsBanks:
   - {fileID: 975607785559403009}
-  cacheTime: 638668843172659651
+  cacheTime: 638681389232896886
   cacheVersion: 131620
 --- !u!114 &975607785559403009
 MonoBehaviour:
@@ -87,11 +172,38 @@ MonoBehaviour:
   Path: ../fmodAudios/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638668843172659651
+  lastModified: 638681389232896886
   FileSizes:
   - Name: Desktop
-    Value: 824
+    Value: 990
   Exists: 1
+--- !u!114 &4588843754510639632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/AlarmOff
+  m_EditorClassIdentifier: 
+  Path: event:/AlarmOff
+  Guid:
+    Data1: 1793993128
+    Data2: 1088928267
+    Data3: -1505096257
+    Data4: 428543207
+  Banks:
+  - {fileID: -3946699672108698188}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1384
 --- !u!114 &8999278994914449598
 MonoBehaviour:
   m_ObjectHideFlags: 0

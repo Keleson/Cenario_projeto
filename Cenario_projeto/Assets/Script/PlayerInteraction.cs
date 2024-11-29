@@ -8,10 +8,13 @@ public class PlayerInteraction : MonoBehaviour
     public float rayDistance = 10f; 
     private bool pegar = false;
     public Transform objectViewer; 
+    public GameObject despertador; 
+    public GameObject offClick;
     private Interactable currentInteractable; 
     private Vector3 originPosition; 
     private Quaternion originRotation; 
     public bool isViewing; 
+    public bool canFinish; 
 
     // Start is called before the first frame update
     void Start()
@@ -40,16 +43,27 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (pegar){
 
+                        if(interactable.isMoving) 
+                        {
+                            return;
+                        }
                         currentInteractable = interactable ;    
                          isViewing = true; 
+                         pegar = false;
+                         Invoke("CanFinish", 1f); 
 
                         if(currentInteractable.item.pegavel){
                             originPosition = currentInteractable.transform.position;
                             originRotation = currentInteractable.transform.rotation; 
                             StartCoroutine(MovingObject(currentInteractable, objectViewer.position)); 
                             currentInteractable.gameObject.transform.rotation = Quaternion.Euler(0,90,180);
-                        } 
+                        } else{
 
+                             Destroy(offClick);
+                             Destroy(despertador);
+                        }
+
+                
                 }
 
             } 
@@ -70,8 +84,20 @@ public class PlayerInteraction : MonoBehaviour
         pegar = true; 
 
     }
+
+    void CanFinish()
+    {
+        canFinish = true; 
+        UIManager.instance.SetBackImage(true); 
+    }
+
+    void FinishView()
+    {
+        
+    }
     IEnumerator MovingObject (Interactable obj, Vector3 position){
 
+        obj.isMoving = true;
         float timer = 0f; 
 
         while(timer < 1){
@@ -83,6 +109,7 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         obj.transform.position = position; 
+        obj.isMoving = false; 
 
 
     }

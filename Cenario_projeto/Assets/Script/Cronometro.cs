@@ -4,6 +4,7 @@ using TMPro;
 using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Cronometro : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Cronometro : MonoBehaviour
     private int countMin; 
     public int multi = 2; 
     private bool horaMenor = true; 
+    public GameObject Alarm; 
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +35,6 @@ public class Cronometro : MonoBehaviour
             contaseg = 0;
             multi+= 2; 
         }
-        if (countMin == 1){
-             
-        }
         if(horaMenor){
         textHora.text = "0"+ contaHora+ ":"+ contaDec + countMin;
         textHora_desp.text = "0"+ contaHora+ ":"+ contaDec + countMin; 
@@ -53,6 +52,16 @@ public class Cronometro : MonoBehaviour
             horaMenor = false; 
             textHora.text = contaHora+ ":"+ contaDec + countMin;
             textHora_desp.text = contaHora+ ":"+ contaDec + countMin;
+        }
+
+        if (countMin == 5 && Alarm){
+                  #if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
         }
     }
 }
