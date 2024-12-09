@@ -6,5 +6,6 @@ using UnityEngine;
 public class Item : ScriptableObject
 {   
     public bool pegavel; 
+    public bool computer; 
     public string texto;
 }

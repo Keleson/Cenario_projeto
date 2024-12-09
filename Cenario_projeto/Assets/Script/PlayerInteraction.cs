@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 public class PlayerInteraction : MonoBehaviour
 {
     private Camera cam;  
     public float rayDistance = 10f; 
     private bool pegar = false;
-    public Transform objectViewer; 
+    public Transform objectViewer;
+    public UnityEvent OnFinishView;  
+    public UnityEvent OnView; 
     public GameObject despertador; 
     public GameObject offClick;
     private Interactable currentInteractable; 
+    public GameObject screenPc; 
+    public GameObject came; 
     private Vector3 originPosition; 
     private Quaternion originRotation; 
-    public bool isViewing; 
-    public bool canFinish; 
+    public bool isViewing = false; 
+    public bool canFinish = false;
+    
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,15 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     private void CheckInteractables(){
+
+        if (isViewing){
+
+            if(canFinish && pegar){
+                FinishView(); 
+                pegar = false; 
+            }
+            return; 
+        }
 
         RaycastHit hit; 
         Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f)); 
@@ -49,20 +65,34 @@ public class PlayerInteraction : MonoBehaviour
                         }
                         currentInteractable = interactable ;    
                          isViewing = true; 
-                         pegar = false;
-                         Invoke("CanFinish", 1f); 
-
+                         pegar = false; 
+                         
+                         
                         if(currentInteractable.item.pegavel){
                             originPosition = currentInteractable.transform.position;
                             originRotation = currentInteractable.transform.rotation; 
                             StartCoroutine(MovingObject(currentInteractable, objectViewer.position)); 
                             currentInteractable.gameObject.transform.rotation = Quaternion.Euler(0,90,180);
+                            Invoke("CanFinish", 2f);
+
+                            
                         } else{
 
                              Destroy(offClick);
-                             Destroy(despertador);
+                             Destroy(despertador); 
+                             canFinish = true;
+                             isViewing = false;
+
                         }
 
+                          if(currentInteractable.item.computer){
+                            
+                            gameObject.SetActive(false); 
+                            screenPc.SetActive(true); 
+                            came.SetActive(true); 
+                            
+                        }
+                        
                 
                 }
 
@@ -93,7 +123,20 @@ public class PlayerInteraction : MonoBehaviour
 
     void FinishView()
     {
-        
+        canFinish = false; 
+
+        isViewing = false;
+
+        UIManager.instance.SetBackImage(false); 
+
+        if(currentInteractable.item.pegavel){
+
+            currentInteractable.transform.rotation = originRotation;
+            StartCoroutine(MovingObject(currentInteractable,originPosition)); 
+
+        }
+
+        OnFinishView.Invoke(); 
     }
     IEnumerator MovingObject (Interactable obj, Vector3 position){
 

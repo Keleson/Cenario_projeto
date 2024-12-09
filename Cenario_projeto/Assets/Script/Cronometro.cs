@@ -10,6 +10,7 @@ public class Cronometro : MonoBehaviour
 {
     public TextMeshProUGUI textHora;
     public TextMeshProUGUI textHora_desp;
+    public TextMeshProUGUI textHora_pc;
     public int contaHora = 7; 
     public int contaDec = 3; 
     public float contaseg; 
@@ -38,6 +39,7 @@ public class Cronometro : MonoBehaviour
         if(horaMenor){
         textHora.text = "0"+ contaHora+ ":"+ contaDec + countMin;
         textHora_desp.text = "0"+ contaHora+ ":"+ contaDec + countMin; 
+        textHora_pc.text = "0"+ contaHora+ ":"+ contaDec + countMin; 
         }
 
         if (countMin == 10){
@@ -52,6 +54,7 @@ public class Cronometro : MonoBehaviour
             horaMenor = false; 
             textHora.text = contaHora+ ":"+ contaDec + countMin;
             textHora_desp.text = contaHora+ ":"+ contaDec + countMin;
+            textHora_pc.text = contaHora+ ":"+ contaDec + countMin;
         }
 
         if (countMin == 5 && Alarm){

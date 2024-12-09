@@ -5,9 +5,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance; 
-    public GameObject backItem; 
 
-    public GameObject handCursor ; 
+    public GameObject handCursor ;
+    public GameObject backItem; 
     
     private void Awake(){
 
